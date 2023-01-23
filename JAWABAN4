@@ -1,0 +1,131 @@
+# Menginstal Python3
+pip3 install mysql-connector
+
+#menghubungkan ke MYSQL
+import mysql.connector
+
+db = mysql.connector.connect(
+  host="localhost",
+  user="admin",
+  passwd=""
+)
+
+if db.is_connected():
+  print("sukses")
+  
+# connect ke python3
+python3 connect.py
+
+# connect ke MYSQL
+import mysql.connector
+
+db = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd=""
+)
+
+# pengecekan apakah sudah terhubung atau belum
+if db.is_connected():
+  print("sukses")
+  
+# membuat database
+cursor = db.cursor()
+
+cursor.execute(sql)
+
+# membuat file baru
+import mysql.connector
+
+db = mysql.connector.connect(
+  host="localhost",
+  user="admin",
+  passwd=""
+)
+
+cursor = db.cursor()
+cursor.execute("CREATE DATABASE toko_mainan")
+
+print("Database berhasil dibuat!")
+
+# membuat database dengan python
+python3 create_db.py
+
+# membuat table 
+db = mysql.connector.connect(
+  host="localhost",
+  user="admin",
+  passwd="",
+  database="toko_mainan"
+)
+
+# membuat file baru 
+import mysql.connector
+
+db = mysql.connector.connect(
+  host="localhost",
+  user="admin",
+  passwd="",
+  database="toko_mainan"
+)
+
+cursor = db.cursor()
+sql = """CREATE TABLE customers (
+  customer_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255),
+  address Varchar(255)
+)
+"""
+cursor.execute(sql)
+
+print("Tabel customers berhasil dibuat!")
+
+# menghubungkan tabel ke py3
+python3 create_table.py
+
+# insert data
+import mysql.connector
+
+db = mysql.connector.connect(
+  host="localhost",
+  user="admin",
+  passwd="",
+  database="toko_mainan"
+)
+
+cursor = db.cursor()
+sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+val = ("Nazlha", "Tangerang")
+cursor.execute(sql, val)
+
+db.commit()
+
+print("{} data ditambahkan".format(cursor.rowcount))
+
+# mengeksekusi
+python3 insert_one.py
+
+# insert into untuk menginsert data
+sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+val = ("Nazlha", "Tangerang")
+cursor.execute(sql, val)
+
+db.commit()
+
+# menampilkan data
+import mysql.connector
+
+db = mysql.connector.connect(
+  host="localhost",
+  user="admin",
+  passwd="",
+  database="toko_mainan"
+)
+
+cursor = db.cursor()
+sql = "SELECT * FROM customers"
+cursor.execute(sql)
+
+result = cursor.fetchone()
+
+print(result)
